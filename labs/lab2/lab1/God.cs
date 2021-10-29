@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace lab1
+namespace lab2
 {
     sealed class God : HalfGod
     {

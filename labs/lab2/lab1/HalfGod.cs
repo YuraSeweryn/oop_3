@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace lab1
+namespace lab2
 {
 
-    class HalfGod : IDisposable
+    class HalfGod : IDisposable, ICarma, IDoneGood
     {
         #region Properties and Fields
 

@@ -2,17 +2,29 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace lab1
+namespace lab2
 {
-    class Person : IDisposable
+    public delegate void FeedPerson(string s);
+
+    public class Person : Being, IDisposable
     {
+        public event FeedPerson FeedEvent;
+        Action<string> action = Notify;
+        Func<string, string> function = str => { Console.WriteLine(str); return ""; };
+
+        private static void Notify(string obj)
+        {
+            Console.WriteLine(obj);
+        }
+
         #region Properties and Fields
         internal static long counter;
         DateTime bornDate;
         private bool disposedValue;
         string name;
+        int Hunger = 0;
 
-        public virtual string Name
+        public override string Name
         {
             get
             {
@@ -33,7 +45,7 @@ namespace lab1
             {
                 if (value > DateTime.Now)
                 {
-                    throw new ArgumentException("Can`t be born in future");
+                    throw new InvalidDateException("Born date " + value.ToLongDateString());
                 }
                 bornDate = value;
             }
@@ -63,14 +75,17 @@ namespace lab1
         }
         #endregion
 
+        public void Feed(int feed)
+        {
+            Hunger += feed;
+            FeedEvent.Invoke($"1. I'm {name} and my hunger is: {Hunger}");
+            action($"2. I'm {name} and my hunger is: {Hunger}");
+            function($"3. I'm {name} and my hunger is: {Hunger}");
+        }
 
-        public string Introduce()
+        public override string Introduce()
         {
             return $"Hi I'm {Name}, and I was born on {BornDate.Date}. I'm {this.GetType().Name}";
-        }
-        public static string HowMany()
-        {
-            return $"There are {counter} of us";
         }
 
         #region GC

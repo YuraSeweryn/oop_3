@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace lab1
+namespace lab2
 {
-    class Hero : Person, IDisposable
+    class Hero : Person, IDisposable, ISuperPower
     {
         public string Power { get; private set; }
 
@@ -20,7 +20,7 @@ namespace lab1
         }
 
         #endregion
-
+        
         public virtual string SuperPower()
         {
             return $"My SuperPower is: {Power}";
