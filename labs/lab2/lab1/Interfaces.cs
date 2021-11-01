@@ -11,7 +11,7 @@ namespace lab2
 
     interface ICarma
     {
-        void IncreaseCarma();
+        public void IncreaseCarma();
         void DecreaseCarma();
     }
 

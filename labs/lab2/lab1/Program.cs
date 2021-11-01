@@ -23,7 +23,10 @@ namespace lab2
             Console.WriteLine();
             Person p3 = new Person("Pupkin");
             p3.FeedEvent += Notify;
-            p3.FeedEvent += anonimMethod;
+            p3.FeedEvent += delegate (string mes)
+            {
+                Console.WriteLine("anonimMethod  " + mes);
+            };
             p3.FeedEvent += lambda;
             p3.Feed(10);
             #region lab1
@@ -51,11 +54,6 @@ namespace lab2
         {
             Console.WriteLine("Notify   " + message);
         }
-
-        static FeedPerson anonimMethod = delegate (string mes)
-        {
-            Console.WriteLine("anonimMethod  "+ mes);
-        };
 
         static FeedPerson lambda = (s) => Console.WriteLine("lambda   "+ s);
 

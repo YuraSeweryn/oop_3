@@ -78,9 +78,12 @@ namespace lab2
         public void Feed(int feed)
         {
             Hunger += feed;
-            FeedEvent.Invoke($"1. I'm {name} and my hunger is: {Hunger}");
-            action($"2. I'm {name} and my hunger is: {Hunger}");
-            function($"3. I'm {name} and my hunger is: {Hunger}");
+            if (FeedEvent != null)
+            {
+                FeedEvent.Invoke($"1. I'm {name} and my hunger is: {Hunger}");
+                action($"2. I'm {name} and my hunger is: {Hunger}");
+                function($"3. I'm {name} and my hunger is: {Hunger}");
+            }
         }
 
         public override string Introduce()

@@ -43,10 +43,15 @@ namespace lab2
         }
         #endregion
 
-        public void IncreaseCarma()
+        void ICarma.IncreaseCarma()
         {
             TotalKarma++;
         }
+        void IDoneGood.IncreaseCarma()
+        {
+            TotalKarma++;
+        }
+
         public void DecreaseCarma()
         {
             TotalKarma--;
