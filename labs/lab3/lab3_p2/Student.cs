@@ -21,7 +21,7 @@ namespace System
         public Student(string name, float grade, object data)
         {
             Id = students.Count + 1;
-            Name = name;
+            Name = name; 
             Grade = grade;
             Data = data;
             students.Add(this);

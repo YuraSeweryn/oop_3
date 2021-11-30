@@ -5,13 +5,14 @@ namespace System
     internal class Appartment : Component
     {
         int peopleLives;
-        public Appartment(string name, int people = 0)
-        : base(name)
-        { peopleLives = people; }
+
+        public Appartment(string name, int people = 0): base(name)
+        {
+            peopleLives = people; 
+        }
 
         public override void Display()
         {
-
             Console.WriteLine(name);
         }
 
@@ -20,17 +21,13 @@ namespace System
             peopleLives = c;
         }
 
-        public override void Remove(Component component)
-        {
-        }
+        public override void Remove(Component c) { }
 
         public override int GetNumberOfPeople()
         {
             return peopleLives;
         }
 
-        public override void Add(Component c)
-        {
-        }
+        public override void Add(Component c) { }
     }
 }

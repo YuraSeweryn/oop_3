@@ -27,11 +27,7 @@
     {
         public Documents GetDocuments(int id)
         {
-            if (Student.students[id - 1].Grade > 60)
-            {
-                return Student.students[id - 1].GenerateDoc();
-            }
-            throw new Exception();
+            return Student.students[id - 1].GenerateDoc();
         }
     }
 }

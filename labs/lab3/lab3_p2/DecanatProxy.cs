@@ -10,7 +10,7 @@
             docs = new Documents();
         }
 
-        Documents IDecanat.GetDocuments(int number)
+        Documents IDecanat.GetDocuments(int id)
         {
             if (docs != null)
             {
@@ -20,11 +20,11 @@
             {
                 dec = new Decanat();
             }
-            try
+            if (Student.students[id - 1].Grade > 60)
             {
-                docs = dec.GetDocuments(number);
+                docs = dec.GetDocuments(id);
             }
-            catch
+            else
             {
                 Console.WriteLine("Cannot create documents, marks are too low");
             }

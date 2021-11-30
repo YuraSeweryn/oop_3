@@ -8,8 +8,6 @@ namespace System
 
         public int number { get; private set; }
 
-        public List<Component> subComponents = new List<Component>();
-
         public Component(string name)
         {
             this.name = name;

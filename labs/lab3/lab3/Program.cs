@@ -7,16 +7,16 @@ namespace System
         static void Main()
         {
             Composite root = new Composite("City");
-            Component region = new Region("Bronx");
-            Component street = new Street("Main ave");
-            Component building = new Building("42");
-            Component entrance1 = new Entrance("entr3");
+            Composite district = new District("Bronx");
+            Composite street = new Street("Main ave");
+            Composite building = new Building("42");
+            Composite entrance1 = new Entrance("entr3");
             Component appartment1 = new Appartment("apart69", 4);
-            Component entrance2 = new Entrance("entr2");
+            Composite entrance2 = new Entrance("entr2");
             Component appartment2 = new Appartment("apart694", 10);
 
-            root.Add(region);
-            region.Add(street);
+            root.Add(district);
+            district.Add(street);
             street.Add(building);
             building.Add(entrance1);
             building.Add(entrance2);
@@ -39,29 +39,29 @@ namespace System
 
     class Composite : Component
     {
-        List<Component> Regions = new List<Component>();
-
+        internal List<Component> childrens = new List<Component>();
+        internal string blankspace = "  ";
         public Composite(string name)
         : base(name)
         { }
 
         public override void Add(Component component)
         {
-            Regions.Add(component);
+            childrens.Add(component);
         }
 
         public override void Remove(Component component)
         {
-            Regions.Remove(component);
+            childrens.Remove(component);
         }
 
         public override void Display()
         {
             Console.WriteLine(name);
 
-            foreach (Component component in Regions)
+            foreach (Component component in childrens)
             {
-                Console.Write("  ");
+                Console.Write(blankspace);
                 component.Display();
             }
         }
@@ -69,7 +69,7 @@ namespace System
         public override int GetNumberOfPeople()
         {
             int sum = 0;
-            foreach(var a in Regions)
+            foreach(var a in childrens)
             {
                 sum += a.GetNumberOfPeople();
             }

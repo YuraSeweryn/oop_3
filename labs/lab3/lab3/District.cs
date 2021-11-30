@@ -2,12 +2,12 @@
 
 namespace System
 {
-    internal class Street : Composite
+    class District : Composite
     {
-        public Street(string name)
+        public District(string name)
         : base(name)
         {
-            blankspace += "    ";
+            blankspace += "  ";
         }
     }
 }
